@@ -1,0 +1,10 @@
+[meta]
+name = "Events Reminder"
+author = "Greep"
+category = "Events"
+siteid = 123
+
+version = "1.0"
+
+[script]
+imports = [ "Icons.as", "Permissions.as" ]
