@@ -1,5 +1,5 @@
 void checkSuperRoyalMain() {
-    Time::Info time = TimeParseCEST();
+    Time::Info time = TimeParseCET();
 
     int eventHour = 20;
 

@@ -1,5 +1,5 @@
 void checkCOTDMain(){
-    Time::Info time = TimeParseCEST();
+    Time::Info time = TimeParseCET();
 
     int eventHour = 19;
 
