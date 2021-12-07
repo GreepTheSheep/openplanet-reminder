@@ -28,6 +28,16 @@ Time::Info TimeParseCET(){
     return utc;
 }
 
+Time::Info TimeParseCustom(int offset){
+    Time::Info utc = Time::ParseUTC();
+    utc.Hour += offset;
+    if(utc.Hour > 24){
+        utc.Hour -= 24;
+        utc.Day++;
+    }
+    return utc;
+}
+
 // -------- Notification desc -----------
 
 string COTDNotifDesc(){

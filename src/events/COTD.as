@@ -1,6 +1,11 @@
 void checkCOTDMain(){
-    Time::Info time = TimeParseCET();
-
+    Time::Info time;
+    if (setting_customUTC) {
+        time = TimeParseCustom(setting_customUTC_offset);
+    } else {
+        time = TimeParseCET();
+    }
+    
     int eventHour = 19;
 
     if (setting_cotd_30minutes && time.Hour == eventHour-1 && time.Minute == 30 && time.Second == 0){
@@ -34,7 +39,12 @@ void checkCOTDMain(){
 }
 
 void checkCOTDRerun1(){
-    Time::Info time = TimeParseCEST();
+    Time::Info time;
+    if (setting_customUTC) {
+        time = TimeParseCustom(setting_customUTC_offset);
+    } else {
+        time = TimeParseCET();
+    }
 
     int eventHour = 03;
 
@@ -69,7 +79,12 @@ void checkCOTDRerun1(){
 }
 
 void checkCOTDRerun2(){
-    Time::Info time = TimeParseCEST();
+    Time::Info time;
+    if (setting_customUTC) {
+        time = TimeParseCustom(setting_customUTC_offset);
+    } else {
+        time = TimeParseCET();
+    }
 
     int eventHour = 11;
 

@@ -1,5 +1,10 @@
 void checkSuperRoyalMain() {
-    Time::Info time = TimeParseCET();
+    Time::Info time;
+    if (setting_customUTC) {
+        time = TimeParseCustom(setting_customUTC_offset);
+    } else {
+        time = TimeParseCET();
+    }
 
     int eventHour = 20;
 
@@ -34,7 +39,12 @@ void checkSuperRoyalMain() {
 }
 
 void checkSuperRoyalRerun1() {
-    Time::Info time = TimeParseCEST();
+    Time::Info time;
+    if (setting_customUTC) {
+        time = TimeParseCustom(setting_customUTC_offset);
+    } else {
+        time = TimeParseCET();
+    }
 
     int eventHour = 04;
 
@@ -69,7 +79,12 @@ void checkSuperRoyalRerun1() {
 }
 
 void checkSuperRoyalRerun2() {
-    Time::Info time = TimeParseCEST();
+    Time::Info time;
+    if (setting_customUTC) {
+        time = TimeParseCustom(setting_customUTC_offset);
+    } else {
+        time = TimeParseCET();
+    }
 
     int eventHour = 12;
 
