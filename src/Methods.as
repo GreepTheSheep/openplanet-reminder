@@ -1,29 +1,16 @@
-// -------- Logging -----------
-void log(string message) {
-    print("[\\$09C"+Meta::ExecutingPlugin().get_Name() + "\\$z] " + message);
-}
-
-void error(string message) {
-    print("[\\$F03"+Meta::ExecutingPlugin().get_Name() + "\\$z] " + message);
-}
-
 // -------- Time convert -----------
-Time::Info TimeParseCEST(){
+// Offsets: 1=CET, 2=CEST
+
+Time::Info TimeParseFromConfig(){
     Time::Info utc = Time::ParseUTC();
-    utc.Hour += 2;
+    utc.Hour += configClass.getOffsetFromAPI();
     if(utc.Hour > 24){
         utc.Hour -= 24;
         utc.Day++;
     }
-    return utc;
-}
-
-Time::Info TimeParseCET(){
-    Time::Info utc = Time::ParseUTC();
-    utc.Hour += 1;
-    if(utc.Hour > 24){
-        utc.Hour -= 24;
-        utc.Day++;
+    if(utc.Hour < 0){
+        utc.Hour += 24;
+        utc.Day--;
     }
     return utc;
 }
@@ -34,6 +21,10 @@ Time::Info TimeParseCustom(int offset){
     if(utc.Hour > 24){
         utc.Hour -= 24;
         utc.Day++;
+    }
+    if(utc.Hour < 0){
+        utc.Hour += 24;
+        utc.Day--;
     }
     return utc;
 }
